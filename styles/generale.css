@@ -1,0 +1,17 @@
+header{
+    color: white;
+    background-color: rgb(76, 76, 230);
+}
+body{
+    background-color: #F3EFEA;
+    font-family: 'Open Sans', sans-serif;
+    color: #323232;
+    font-size: 16px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    padding: 0 25px;
+}

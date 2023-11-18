@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/generale.css">
+    <link rel="stylesheet" href="/styles/addTasks.css">
+    <link rel="stylesheet" href="/styles/areaTasks.css">
+    <link rel="stylesheet" href="/styles/areaTasks.css">
+    <link rel="stylesheet" href="/styles/task.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="container">
+        <h1>Список задач</h1>
+    </header>
+    <main>
+        <section class="addBlock container">
+            <div class="innerBlock">
+                <h1 class="title-add">Новая задача</h1>
+                <form class="formAdd">
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Название задачи...">
+                    <button type="submit" class="btn btn-primary mb-3">Добавить</button>
+                </form>
+            </div>
+        </section>
+        <section class="tasks container">
+            <div class="state state-1">
+                <div>
+                    <h1>Бэклог</h1>
+                </div>
+                <ul>
+                    <li>Выучить JS</li>
+                    <li>Выучить React</li>
+                    <li>Сделать домашку</li>
+                </ul>
+            </div>
+            <div class="state state-2">
+                <div>
+                    <h1>В процессе</h1>
+                </div>
+                <ul>
+                    <li>Выпить смузи</li>
+                    <li>Попить воды</li>
+                </ul>
+            </div>
+            <div class="state state-3">
+                <div>
+                    <h1>Готово</h1>
+                </div>
+                <ul>
+                    <li>Позвонить маме</li>
+                    <li>Погладить кота</li>
+                </ul>
+            </div>
+            <div class="state state-4">
+                <div>
+                    <h1>Корзина</h1>
+                </div>
+                <ul>
+                    <li>Сходить погулять</li>
+                    <li>Прочитать Войну и Мир</li>
+                </ul>
+                <button>Очистить</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

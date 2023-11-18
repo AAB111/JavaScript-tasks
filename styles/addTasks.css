@@ -1,0 +1,35 @@
+.addForm{
+    display: flex;
+    flex-direction: row;
+}
+.addBlock{
+    background-color: rgb(166, 209, 230);
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.innerBlock{
+    background-color: white;
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.innerBlock h1{
+    margin-bottom: 15px;
+}
+.formAdd{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+.title-add{
+    color: black;
+}
+.formAdd button{
+    background-color: rgb(76, 76, 230);
+    padding: 10px;
+    margin-left: 5px;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+}
