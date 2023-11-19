@@ -25,6 +25,10 @@
 .title-add{
     color: black;
 }
+.formAdd button:hover{
+    background-color: rgb(86, 86, 240);
+    cursor: pointer;
+}
 .formAdd button{
     background-color: rgb(76, 76, 230);
     padding: 10px;

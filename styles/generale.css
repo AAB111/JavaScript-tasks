@@ -2,6 +2,9 @@ header{
     color: white;
     background-color: rgb(76, 76, 230);
 }
+header h1{
+    padding: 10px 0;
+}
 body{
     background-color: #F3EFEA;
     font-family: 'Open Sans', sans-serif;
