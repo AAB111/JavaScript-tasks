@@ -3,10 +3,14 @@ import {FormAddTaskComponent} from './components/add-task-component.js';
 import { AreaTasksComponent } from './components/area-tasks-component.js';
 import {render, RenderPosition} from './render.js';
 import { TaskComponent } from './components/task-component.js';
-import { ListTaskComponent } from './components/list-tasks-component.js';
-
-
-const tasks = [new TaskComponent("Бэклог",1),new TaskComponent("В процессе",2),new TaskComponent("Готово",3),new TaskComponent("Корзина",4)]
+import { TaskListComponent } from './components/list-tasks-component.js';
+import { ClearBtn } from './components/clearBtn-component.js';
+import { StatusLabel,Status } from './const.js';
+import { TasksService } from './TaskService.js';
+// const tasks = [new TaskComponent("Бэклог",'backlog'),
+// new TaskComponent("В процессе",'process'),
+// new TaskComponent("Готово",'done'),
+// new TaskComponent("Корзина",'basket')]
 
 const bodyContainer= document.querySelector('.body');
 const mainContainer = document.querySelector('.main');
@@ -15,13 +19,33 @@ render(new FormAddTaskComponent(), mainContainer);
 render(new AreaTasksComponent(), mainContainer);
 
 const areaTasksContainer = document.querySelector('.tasks')
-tasks.forEach((task) => {
-    render(task,areaTasksContainer)
-})
+// tasks.forEach((task) => {
+//     render(task,areaTasksContainer)
+// })
 
-const listTasks = [new ListTaskComponent([`<li>Выучить JS</li>`,`<li>Выучить React</li>`,`<li>Сделать домашку</li>`]),new ListTaskComponent([`<li>Выпить смузи</li>`,`<li>Попить воды</li>`]),new ListTaskComponent([`<li>Позвонить маме</li>`,`<li>Погладить кота</li>`]),new ListTaskComponent([`<li>Сходить погулять</li>`,`<li>Прочитать Войну и Мир</li>`,`<button>Очистить</button>`])]
-const tasksElements =  document.querySelectorAll('.state')
-listTasks.forEach((list,index)=>{
-    render(list,tasksElements[index])
-})
+// const listTasks = [new TaskListComponent(`Выучить JS`),
+// new TaskListComponent(`Выучить React`),
+// new TaskListComponent(`Сделать домашку`)]
+    // new ListTaskComponent([`Выпить смузи`,`Попить воды`]),
+    // new ListTaskComponent([`Позвонить маме`,`Погладить кота`]),
+    // new ListTaskComponent([`Сходить погулять`,`Прочитать Войну и Мир`])]
+const taskService = new TasksService();
+Object.keys(Status).forEach(state => {
+    let task = new TaskComponent({status:Status[state]})
+    render(task,areaTasksContainer);
+    let tasksList = taskService.getTasksByStatus(Status[state])
+    console.log(tasksList)
+    tasksList.forEach(t=>{
+        const taskList = new TaskListComponent({id: t.id, title: t.title, status: t.status});
+        render(taskList,task.getElement());
+    })
+    if (state == 'BASKET'){
+        render(new ClearBtn(),task.getElement())
+    }
+});
+// listTasks.forEach((list,index)=>{
+//     render(list,tasks[index])
+//     if (index == 3){
+//     }
+// })
 

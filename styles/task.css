@@ -3,30 +3,27 @@
     margin-bottom: 15px;
     
 }
-.state-1 h1{
+.state-backlog h1{
     background-color: rgb(177, 177, 177);
     padding: 10px;
     color: rgb(81, 81, 81);
 }
-.state-2 h1{
+.state-process h1{
     background-color: rgb(88, 199, 224);
     padding: 10px;
     color: rgb(81, 81, 81);
 }
-.state-3 h1{
+.state-done h1{
     background-color: rgb(103, 245, 143);
     padding: 10px;
     color: rgb(81, 81, 81);
 }
-.state-4 h1{
+.state-basket h1{
     background-color: rgb(231, 123, 123);
     padding: 10px;
     color: rgb(81, 81, 81);
 }
-.state ul{
-    list-style-type: none;
-}
-.state ul li{
+.state p{
     padding: 5px 0 5px 0;
     background-color: white;
     border-radius: 10px;

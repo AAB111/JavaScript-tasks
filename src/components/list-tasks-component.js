@@ -1,34 +1,26 @@
 import {createElement} from '../render.js';
+import { AbstractComponent } from "./AbstractComponent.js";
 
-
-function createComponentTemplate(liElements) {
+function createComponentTemplate(status, title) {
     return(
-        `<ul>${
-            liElements.join('\n')
+        `<p>${
+            title
         }
-        </ul>`
+        </p>`
     );
 }
-export class ListTaskComponent {
-    constructor(listTasks){
-        this.listTasks = listTasks;
+export class TaskListComponent extends AbstractComponent{
+    #id = null;
+    #status = null;
+    #title = null;
+    constructor({id, title, status}){
+        super();
+        this.#id = id;
+        this.#status = status;
+        this.#title = title;
+        console.log(id, title, status);
     }
     getTemplate() {
-        return createComponentTemplate(this.listTasks)
+        return createComponentTemplate(this.#status,this.#title)
     }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
-  }
 }

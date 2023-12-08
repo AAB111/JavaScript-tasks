@@ -1,5 +1,5 @@
 import {createElement} from '../render.js';
-
+import { AbstractComponent } from "./AbstractComponent.js";
 
 function createComponentTemplate() {
     return (
@@ -9,23 +9,8 @@ function createComponentTemplate() {
 }
 
 
-export class AreaTasksComponent {
+export class AreaTasksComponent extends AbstractComponent{
   getTemplate() {
     return createComponentTemplate();
-  }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
   }
 }

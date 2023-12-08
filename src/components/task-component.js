@@ -1,37 +1,24 @@
 import {createElement} from '../render.js';
+import { StatusLabel } from '../const.js';
+import { AbstractComponent } from "./AbstractComponent.js";
 
-
-function createComponentTemplate(title,index) {
+function createComponentTemplate(status) {
     return (
-        `<div class="state state-${index}">
+        `<div class="state state-${status}">
             <div>
-                <h1>${title}</h1>
+                <h1>${StatusLabel[status]}</h1>
             </div>
         </div>`
       );
 }
 
-export class TaskComponent {
-    constructor(title,index){
-        this.title = title
-        this.index = index
+export class TaskComponent extends AbstractComponent{
+  #status = null;
+  constructor({status}){
+        super();
+        this.#status = status;
     }
   getTemplate() {
-    return createComponentTemplate(this.title,this.index);
-  }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
+    return createComponentTemplate(this.#status);
   }
 }
