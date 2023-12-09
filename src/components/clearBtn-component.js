@@ -8,7 +8,21 @@ function createClearBtnComponent() {
 }
 
 export class ClearBtn extends AbstractComponent {
+    #taskService = null;
+    #disabled = null;
+
+    constructor(taskService, disabled = false) {
+        super();
+        this.#taskService = taskService;
+        this.#disabled = disabled;
+        this.getElement().addEventListener("click", this.buttonClickHandler.bind(this));
+    }
     getTemplate() {
         return createClearBtnComponent();
+    }
+    buttonClickHandler(evt) {
+        evt.preventDefault();
+        this.#taskService.deleteByStatus('BASKET');
+        window.dispatchEvent(new CustomEvent("create-task"));
     }
 }

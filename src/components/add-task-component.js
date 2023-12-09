@@ -9,7 +9,7 @@ function createComponentTemplate() {
             <div class="innerBlock">
                 <h1 class="title-add">Новая задача</h1>
                 <form class="formAdd">
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="Название задачи...">
+                    <input type="text" class="form-control" id="inputTask" placeholder="Название задачи...">
                     <button type="submit">Добавить</button>
                 </form>
             </div>
@@ -20,7 +20,21 @@ function createComponentTemplate() {
 
 
 export class FormAddTaskComponent extends AbstractComponent{
+  #taskService = null;
+
+  constructor(taskService){
+        super();
+        this.#taskService = taskService;
+        this.getElement().querySelector('.formAdd').addEventListener(`submit`, this.formSubmitHandler.bind(this));
+    }
   getTemplate() {
     return createComponentTemplate();
+  }
+  formSubmitHandler(evt) {
+      evt.preventDefault();
+      const inputElement = this.getElement().querySelector(`#inputTask`);
+      const title = inputElement.value.trim();
+      this.#taskService.create({ title });
+      inputElement.value = ``;
   }
 }
