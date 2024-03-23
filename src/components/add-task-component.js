@@ -2,7 +2,8 @@ import {createElement} from '../render.js';
 import { AbstractComponent } from './AbstractComponent.js';
 
 
-function createComponentTemplate() {
+function createComponentTemplate() 
+{
     return (
         `
         <section class="addBlock container">
@@ -33,8 +34,8 @@ export class FormAddTaskComponent extends AbstractComponent{
   formSubmitHandler(evt) {
       evt.preventDefault();
       const inputElement = this.getElement().querySelector(`#inputTask`);
-      const title = inputElement.value.trim();
-      this.#taskService.create({ title });
+      const description = inputElement.value.trim();
+      this.#taskService.create({ description });
       inputElement.value = ``;
   }
 }

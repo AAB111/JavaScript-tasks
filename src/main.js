@@ -7,7 +7,6 @@ import { TaskListComponent } from './components/list-tasks-component.js';
 import { ClearBtn } from './components/clearBtn-component.js';
 import { StatusLabel,Status } from './const.js';
 import { TasksService } from './TaskService.js';
-import { tasks } from './mock/task.js';
 import { CardStubComponent } from './components/task-stub-card-component.js';
 
 const bodyContainer= document.querySelector('.body');
@@ -17,22 +16,22 @@ render(new HeaderComponent(), bodyContainer, RenderPosition.BEFOREBEGIN);
 render(new FormAddTaskComponent(taskService), mainContainer);
 render(new AreaTasksComponent(), mainContainer);
 
-
 function renderTask(state, container) {
     const taskComponent = new TaskComponent({ status : Status[state]},taskService);
     render(taskComponent, container,RenderPosition.BEFOREEND);
     return taskComponent;
-}
+};
 
 function renderList(task, container) {
     const listComponent = new TaskListComponent(task);
     render(listComponent, container,RenderPosition.BEFOREEND);
     return listComponent;
-}
+};
 
-const areaTasksContainer = document.querySelector('.tasks')
+const areaTasksContainer = document.querySelector('.tasks');
 let disabledBtn=false;
-if (taskService.getTasksByStatus().length < 1)
+
+if (taskService.getTasks().length < 1)
     disabledBtn = true;
 
 function renderAllTasks(){
@@ -45,11 +44,9 @@ function renderAllTasks(){
         tasksList.forEach(t=>{
             renderList(t,task.getElement())
         })
-        if (state == 'BASKET'){
+        if (state == 'basket'){
             render(new ClearBtn(taskService,disabledBtn),task.getElement())
         }
     });
 }
-
-
 renderAllTasks();

@@ -1,10 +1,10 @@
 import {createElement} from '../render.js';
 import { AbstractComponent } from "./AbstractComponent.js";
 
-function createComponentTemplate(status, title) {
+function createComponentTemplate(status, description) {
     return(
         `<p>${
-            title
+            description
         }
         </p>`
     );
@@ -12,15 +12,14 @@ function createComponentTemplate(status, title) {
 export class TaskListComponent extends AbstractComponent{
     #id = null;
     #status = null;
-    #title = null;
-    constructor({id, title, status}){
+    #description = null;
+    constructor({_id, description, status}){
         super();
-        this.#id = id;
+        this.#id = _id;
         this.#status = status;
-        this.#title = title;
-        console.log(id, title, status);
+        this.#description = description;
     }
     getTemplate() {
-        return createComponentTemplate(this.#status,this.#title)
+        return createComponentTemplate(this.#status,this.#description)
     }
 }

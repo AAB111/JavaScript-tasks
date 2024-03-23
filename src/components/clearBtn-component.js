@@ -22,7 +22,7 @@ export class ClearBtn extends AbstractComponent {
     }
     buttonClickHandler(evt) {
         evt.preventDefault();
-        this.#taskService.deleteByStatus('BASKET');
+        this.#taskService.deleteByStatus('basket');
         window.dispatchEvent(new CustomEvent("create-task"));
     }
 }

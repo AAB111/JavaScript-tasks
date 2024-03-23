@@ -4,6 +4,7 @@ import { AbstractComponent } from "./AbstractComponent.js";
 import { TaskListComponent } from './list-tasks-component.js';
 import { CardStubComponent } from './task-stub-card-component.js';
 import { ClearBtn } from './clearBtn-component.js';
+
 function createComponentTemplate(status) {
     return (
         `<div class="state state-${status}">
@@ -26,6 +27,7 @@ export class TaskComponent extends AbstractComponent{
         this.#tasks = taskService.getTasksByStatus(status);
         window.addEventListener("create-task", ()=> this.#reRenderTasks(this.#status,  this.#taskService));
     }
+
   getTemplate() {
     return createComponentTemplate(this.#status);
   }
@@ -39,7 +41,7 @@ export class TaskComponent extends AbstractComponent{
         render(new CardStubComponent(),this.getElement());
     }
     this.#tasks.forEach(task => {
-        const taskComponent = new TaskListComponent({ id: task.id, title: task.title, status: task.status });
+        const taskComponent = new TaskListComponent({ _id: task._id, description: task.description, status: task.status });
         render(taskComponent, this.getElement());
     });
     if (status === Status.BASKET){
